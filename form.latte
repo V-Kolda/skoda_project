@@ -1,0 +1,175 @@
+{* Latte template *}
+
+{block title}Form{/block}
+
+{block content}
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+
+<form>
+  <h1>FORMULÁŘ PRO OBJEDNÁNÍ AUTA</h1>    
+  <br><br>
+  <h1 style="text-align: left; font-size: 30px;">Buyer Details</h1>
+  <br>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label style="color: black;" for="inputEmail4">Jméno a Příjmení</label>
+      <input style="background-color: white; color: black; border-color: black;" type="text" class="form-control" placeholder="Adam Nový" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label style="color: black;" for="inputPassword4">Email</label>
+      <input style="background-color: white; color: black; border-color: black;" type="email" class="form-control" placeholder="adam.novy@seznam.cz" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label style="color: black;" for="inputAddress">Address</label>
+    <input style="background-color: white; color: black; border-color: black;" type="text" class="form-control" placeholder="Nová Ulice 123" required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label style="color: black;" for="inputCity">City</label>
+      <input style="background-color: white; color: black; border-color: black;" type="text" class="form-control" placeholder="Plzeň" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label style="color: black;" for="inputState">State</label>
+      <select style="background-color: white; color: black; border-color: black;" class="form-control">
+        <option selected>Choose...</option>
+        <option>Česká republika</option>
+        <option>Německo</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label style="color: black;" for="inputZip">Zip</label>
+      <input style="background-color: white; color: black; border-color: black;" type="number" class="form-control" min="0" placeholder="12345" required>
+    </div>
+  </div>
+  <br>
+  
+  <h1 style="text-align: left; font-size: 30px;">Vehicle Details</h1>
+  <br>
+  <table class="table table-bordered">
+   {foreach $cars as $car}
+  <thead>
+    <tr>
+      <th scope="col">ID: {$car['id']}</th>
+      <th scope="col">First</th>
+      <th scope="col">Second</th>
+      <th scope="col">Third</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th style="border: 3px solid white;" scope="row">Název</th>
+      <td>{$car["name"]}</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th style="border: 3px solid white;" scope="row">Model</th>
+      <td>{$car["type"]}</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th style="border: 3px solid white;" scope="row">Cena</th>
+      <td>{$car["price"]}</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  {/foreach}
+</table>
+
+  <br><br><br>
+  <div class="form-group">
+    <div style="display: block; margin-left: auto; margin-right: auto; width: 8%;">
+      <a style="color: black;" href="">Přidat počet / auto</a>
+    </div>
+  </div>
+  <button style="background-color: white; display: block; margin-left: auto; margin-right: auto; width: 10%; color: black; border-color: black; font-weight: bold;" type="submit" class="btn btn-primary">OBJEDNAT</button>
+</form>
+
+ {*
+{control orderForm}
+*}
+
+{form orderForm}
+    <!-- Simple errors rendering -->
+    <ul class="errors" n:if="$form->hasErrors()">
+	<li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+        <th>{label name, class => "form-control"/}</th>
+        <td>{input name}</td>
+    </div>
+    <div class="form-group col-md-6">
+        <th>{label email, class => "form-control"/}</th>
+        <td>{input email}</td>
+    </div>
+    </div>
+    <div class="form-group">
+        <th>{label address, class => "form-control"/}</th>
+        <td>{input address}</td>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <th>{label city, class => "form-control"/}</th>
+        <td>{input city}</td>
+    </div>
+    <div class="form-group col-md-4">
+        <th>{label state, class => "form-control"/}</th>
+        <td>{input state}</td>
+    </div>
+    <div class="form-group col-md-2">
+        <th>{label zip, class => "form-control"/}</th>
+        <td>{input zip}</td>
+    </div>
+    
+    
+  </div>
+        <th>{label send, class => "form-control button success"/}</th>
+        <td>{input send}</td>
+{/form}
+
+{form comment}
+    {label email/}
+    {input email}
+    {label y/}
+    {input y}
+    <th>{label message/}</th>
+    <td>{input message}</td>
+    <th>{label send/}</th>
+    <td>{input send}</td>
+    <th>{label name/}</th>
+    <div class="text-center">
+        {input name, class => "btn_image"}
+    </div>
+    
+    <div class="form-group">
+        <th>{label date_x, class => "form-control"/}</th>
+        <td>{input date_x}</td>
+    </div>    
+{/form}
+<br>
+
+<form action="/action_page.php">
+  <label for="birthday">Birthday:</label>
+  <input type="date" id="birthday" name="birthday">
+</form>
+<br>
+
+<div id="load">
+  <div>G</div>
+  <div>N</div>
+  <div>I</div>
+  <div>D</div>
+  <div>A</div>
+  <div>O</div>
+  <div>L</div>
+</div>
+<br>

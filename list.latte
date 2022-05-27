@@ -1,0 +1,73 @@
+{* Latte template *}
+
+{block title}Výpis{/block}
+
+{block content}
+
+<div class="jumbotron jumbotron-fluid mb-5">
+
+  <video autoplay muted loop>
+    <source src="/images/video.mp4" type="video/mp4">
+  </video>
+
+  <div class="container text-light text-center">
+    <h1 class="display-2" style="font-family: 'Permanent Marker', cursive;">Car Shop</h1>
+    <div class="mx-auto"></div>
+    <p class="lead pt-2">Nejlepší český prodejce sportovních aut</p>
+    <hr class="my-4 jumbotron_line">
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row mb-5">
+    {foreach $cars as $car}
+    <div class="col-sm-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="/images/{$car["IMG"]}.png">
+            <a style="color: black" href="auto1.png">
+            <h1>{$car["name"]}</h1>
+            </a>
+            <p>{$car["type"]}</p>
+            <p style="color: white; -webkit-text-stroke: 1.2px black;">Maximum speed: {$car["speed"]}</p>
+            <p class="price">{$car["price"]}</p>
+          <p><a class="" href="{link Car:form $car['id']}" ><button>ZAKOUPIT</button></a></p>
+        </div>
+      </div>
+    {/foreach}
+    </div>
+</div>
+
+<img src="/images/shop.jpg" style="width: 60%; height: 50%; display: block; margin-left: auto; margin-right: auto; border: 5px solid black;">
+<div class="container">
+<a style="color: black;" href="https://map.search.ch/Britalian-Sports-Cars,Kehrsatz,Bernstr.4.en.html?pos=602467,195526&zoom=15">Click for the map</a>
+</div>
+
+<div style="display: block; margin-left: auto; margin-right: auto;" class="col-md-4">
+  <div class="single-contact">
+      <h5>Address</h5>
+      <p>Bernstrasse 4, 3122 Kehrsatz BE, D</p>
+  </div>
+  <div class="single-contact">
+      <h5>Phone</h5>
+      <p>(+420) 654 123 987</p>
+  </div>
+  <div class="single-contact">
+     <h5>Email</h5>
+     <p>carshop@info.com</p>
+  </div>
+</div>
+
+<br><br>
+<button onclick="scrollToTop()">
+  Click to scroll to top
+</button>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js">
+</script>
+<script>
+  function scrollToTop() {
+  $(window).scrollTop(0);
+  }
+</script>
+<br>
